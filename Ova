@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/extensions/dynamic/ERC20Permit.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract OVA is ERC20, Ownable {
+    constructor() ERC20("OVA", "OV Coin") {
+        // Mint a random amount of tokens to the deployer's address
+        uint256 mintAmount = 10 ** (uint256(decimals()) * 7); 
+       
+       require(mintAmount > 0,"MINT AMOUNT CAN'T BE ZERO");
+        
+        _mint(msg.sender, mintAmount);
+    }
+}
